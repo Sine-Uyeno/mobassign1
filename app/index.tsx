@@ -1,43 +1,66 @@
-import { StyleSheet, View } from "react-native";
+import { Alert, Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SPButton } from "./SPButton";
 import { itemPresets } from "./buttonLayouts";
 
-export default function Index() {
 
+export default function Index() {
+  const showAlert = () => {
+    Alert.alert("Alert", "Alert button pressed!");
+  }
   
   return (
-    <View
-      style={{
-        backgroundColor: "#1f2128",
-        justifyContent: "center",
-      }}
-    >
-      <View style={page.container}>
-        {itemPresets.map((value) => (
-            <SPButton {...value} key={value.image}></SPButton>
-        ))};
-      </View>
-    </View>
+    <View style={styles.main}>
+          {/* Header */}
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Dashboard</Text>
+          </View>
+    
+          {/* Scrollable Content */}
+          <ScrollView contentContainerStyle={styles.scroll}>
+            <View style={styles.container}>
+              {itemPresets.map((value) => (
+                <SPButton {...value} key={value.image} />
+              ))}
+            </View>
+          </ScrollView>
+    
+          {/* Alert Button */}
+          <View style={styles.alertContainer}>
+            <Button title="Show Alert" onPress={showAlert} color="#ff5252" />
+          </View>
+        </View>
   );
 }
 
-const page = StyleSheet.create({
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: "#1f2128",
+  },
+  header: {
+    paddingTop: 50,
+    paddingBottom: 20,
+    backgroundColor: "#242731",
+    alignItems: "center",
+  },
+  headerText: {
+    color: "#fff",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  scroll: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
-        flex: 1,
-        flexDirection: "row",
-        flexWrap: "wrap",
-        width: '100%',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    padding: 10,
   },
-  buttons: {
-          backgroundColor: "#242731",
-          margin: 5,
-          padding: 50,
-          borderRadius: 10,
-          color: "#FFFFFF",
-          fontFamily: 'sans',
-          flexGrow: 1
+  alertContainer: {
+    padding: 20,
+    backgroundColor: "#1f2128",
   },
-  text: {
-    color: "#FFFFFF",
-  }
-});
+}
+);

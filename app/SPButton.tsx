@@ -28,12 +28,12 @@ export const SPButton = (layout: ButtLayout) => {
         //      
     
     return (
-        <div style={{flex: 1}}>
+        <>
           <TouchableOpacity style={page.buttons}>
               <Image source={iconImages[layout.image]}></Image>
               <Text style = {page.text}>{layout.text}</Text>
           </TouchableOpacity>
-        </div>
+        </>
     );
 }
 
