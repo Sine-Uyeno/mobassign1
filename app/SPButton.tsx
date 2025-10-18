@@ -31,7 +31,7 @@ export const SPButton = (layout: ButtLayout) => {
         <>
           <TouchableOpacity style={page.buttons}>
               <Image source={iconImages[layout.image]}></Image>
-              <Text style = {page.text}>{layout.text}</Text>
+              <Text style = {page.text}>Test</Text>
           </TouchableOpacity>
         </>
     );
